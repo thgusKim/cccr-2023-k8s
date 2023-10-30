@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-gzip-config
+data:
+  nginx-gzip.conf: |
+    server {
+    listen              80;
+    server_name         myapp.example.com;
+    gzip on;
+    gzip_types text/plain application/xml;
+    location / {
+        root   /usr/share/nginx/html;
+        index  index.html;
+      }
+    }

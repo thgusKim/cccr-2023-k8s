@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp-deploy-asg
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: myapp-deploy-asg
+  template:
+    metadata:
+      labels:
+        app: myapp-deploy-asg
+    spec:
+      containers:
+      - name: myweb
+        image: ghcr.io/c1t1d0s7/go-myweb:alpine
+        ports:
+        - containerPort: 8080
+        resources:
+          requests:
+            cpu: 200m
+            memory: 200M
+          limits:
+            cpu: 200m
+            memory: 200M

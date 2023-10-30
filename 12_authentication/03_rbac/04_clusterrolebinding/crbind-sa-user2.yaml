@@ -1,0 +1,13 @@
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: sa-user2-read-pod
+subjects:
+- kind: ServiceAccount
+  name: sa-user2
+  namespace: default
+  apiGroup: ""
+roleRef:
+  kind: ClusterRole
+  name: read-pod
+  apiGroup: "rbac.authorization.k8s.io"

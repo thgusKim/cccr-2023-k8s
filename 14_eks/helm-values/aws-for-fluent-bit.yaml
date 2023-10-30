@@ -1,0 +1,7 @@
+cloudWatchLogs:
+  enabled: true
+  region: ap-northeast-2
+  logGroupName: /aws/eks/myeks/workload
+  logGroupTemplate: /aws/eks/myeks/workload/$kubernetes['namespace_name']
+  logStreamTemplate: $kubernetes['pod_name'].$kubernetes['container_name']
+  autoCreateGroup: true

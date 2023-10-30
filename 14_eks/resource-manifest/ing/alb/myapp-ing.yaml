@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: myapp-alb-ing
+  annotations:
+    #kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    #alb.ingress.kubernetes.io/scheme: internal
+    alb.ingress.kubernetes.io/target-type: instance
+    #alb.ingress.kubernetes.io/target-type: ip
+spec:
+  ingressClassName: alb
+  defaultBackend:
+    service:
+      name: myapp-svc-np
+      port:
+        number: 80
+  rules:
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: myapp-svc-np
+            port:
+              number: 80

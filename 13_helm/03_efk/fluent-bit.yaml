@@ -1,0 +1,15 @@
+config:
+  outputs: |
+    [OUTPUT]
+        Name es
+        Match *
+        Host elasticsearch.logging.svc.cluster.local
+        Port 9200
+        # tls Off
+        # tls.verify Off
+        Retry_Limit False
+        Logstash_Format On
+        Logstash_Prefix fluent-bit
+        Trace_Error On
+        Replace_Dots On
+        Suppress_Type_Name On
